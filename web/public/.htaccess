@@ -1,0 +1,20 @@
+# SPA Rewrite Rules - Serve index.html for all non-file, non-directory requests
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # If the request is for an existing file, serve it directly
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
+
+  # If the request is for an existing directory, serve it directly
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Otherwise, rewrite to index.html (SPA catch-all)
+  # EXCLUDE common API paths and form submissions from the catch-all
+  RewriteCond %{REQUEST_URI} !^/api/
+  RewriteCond %{REQUEST_URI} !^/submit_contact
+  RewriteCond %{REQUEST_URI} !^/submit_career
+  RewriteCond %{REQUEST_URI} !^/submit_debt
+  RewriteRule ^ index.html [L]
+</IfModule>
