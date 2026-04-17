@@ -30,9 +30,21 @@ const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<ViewType>(getInitialView);
   const [selectedServiceIndex, setSelectedServiceIndex] = useState<number | null>(null);
 
-  // Scroll to top on view change
+  // Update title and scroll to top on view change
   useEffect(() => {
     window.scrollTo(0, 0);
+    
+    const titles: Record<ViewType, string> = {
+      'home': 'Think Outsource | Premier BPO & Customer Experience',
+      'about': 'About Us | Think Outsource',
+      'mission-vision': 'Mission & Vision | Think Outsource',
+      'services': 'Our Services | Think Outsource',
+      'contact': 'Contact Us | Think Outsource',
+      'service-detail': 'Service Details | Think Outsource',
+      'think-debt': 'ThinkDebt Solutions | Holistic Financial Wellness & Restoration'
+    };
+    
+    document.title = titles[currentView] || 'Think Outsource';
   }, [currentView, selectedServiceIndex]);
 
   // Meta Pixel Initialization

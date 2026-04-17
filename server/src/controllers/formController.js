@@ -119,7 +119,7 @@ exports.submitCareer = async (req, res) => {
 
 exports.submitDebt = async (req, res) => {
     console.log('[Controller] Processing debt submission');
-    const { fullName, phone, email, debtStatus, employmentStatus, employmentType, event_id } = req.body;
+    const { fullName, phone, email, serviceInterest, debtStatus, employmentStatus, employmentType, event_id } = req.body;
     try {
         // Duplicate Check (Email OR Phone)
         const [existing] = await pool.execute(
@@ -135,8 +135,8 @@ exports.submitDebt = async (req, res) => {
         }
 
         const [result] = await pool.execute(
-            "INSERT INTO debt_leads (full_name, phone_number, email, debt_status, employment_status, employment_type) VALUES (?, ?, ?, ?, ?, ?)",
-            [fullName, phone, email, debtStatus, employmentStatus, employmentType]
+            "INSERT INTO debt_leads (full_name, phone_number, email, service_interest, debt_status, employment_status, employment_type) VALUES (?, ?, ?, ?, ?, ?, ?)",
+            [fullName, phone, email, serviceInterest || 'Not Specified', debtStatus, employmentStatus, employmentType]
         );
         
         // Send email asynchronously
@@ -144,7 +144,7 @@ exports.submitDebt = async (req, res) => {
 
         await sendToGoogleSheets({
             type: 'ThinkDebt Lead',
-            fullName, phone, email, debtStatus, employmentStatus, employmentType
+            fullName, phone, email, serviceInterest, debtStatus, employmentStatus, employmentType
         });
 
         await sendMetaConversionEvent(

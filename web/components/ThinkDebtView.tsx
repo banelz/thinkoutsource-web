@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Shield, CheckCircle, Lock, AlertTriangle, ArrowRight, HelpCircle, ChevronDown, ChevronUp, UserCheck, Search, FileText } from 'lucide-react';
+import { Shield, CheckCircle, Lock, AlertTriangle, ArrowRight, HelpCircle, ChevronDown, ChevronUp, UserCheck, Search, FileText, Smartphone, TrendingUp, BookOpen, Activity, Heart, FileSearch, Users, CreditCard } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ViewType } from '../App';
 
@@ -17,6 +17,7 @@ const ThinkDebtView: React.FC<ThinkDebtViewProps> = ({ onNavigate }) => {
   const [employmentType, setEmploymentType] = useState('Full-time');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [serviceInterest, setServiceInterest] = useState('Debt Review Removal');
   const [phoneError, setPhoneError] = useState('');
   const [formError, setFormError] = useState('');
 
@@ -56,9 +57,10 @@ const ThinkDebtView: React.FC<ThinkDebtViewProps> = ({ onNavigate }) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          fullName,
+          full_name: fullName,
           phone: formattedPhone,
           email,
+          serviceInterest,
           debtStatus,
           employmentStatus,
           employmentType: employmentStatus === 'Employed' ? employmentType : 'N/A',
@@ -98,38 +100,89 @@ const ThinkDebtView: React.FC<ThinkDebtViewProps> = ({ onNavigate }) => {
 
   const faqs = [
     {
-      question: "Is debt review removal legal in South Africa?",
-      answer: "Yes, debt review removal is a legal process in South Africa, governed by the National Credit Act. It typically requires a court order or a clearance certificate from a debt counsellor once all debts are settled or if the consumer was incorrectly placed under debt review."
+      question: "How do I know which financial service is right for me?",
+      answer: "Every individual's situation is unique. When you submit your interest, you are matched with a trained specialist who conducts a comprehensive assessment to recommend the most effective path—whether it's debt restructuring, insurance protection, or digital budgeting tools."
     },
     {
-      question: "How long does the process take?",
-      answer: "The timeline varies depending on the complexity of your case and the legal requirements. Generally, it can take anywhere from a few weeks to several months. Our partners focus on efficient, compliant processing to ensure the best possible turnaround time."
+      question: "What can I expect during the consultation process?",
+      answer: "You'll speak with a vetted professional who will listen to your goals and challenges. They provide clear, expert guidance on the options available to you, helping you make an informed decision without any pressure."
     },
     {
-      question: "Do you guarantee that my debt review will be removed?",
-      answer: "ThinkDebt Solutions is an intermediary that connects you to vetted specialists. We do not guarantee outcomes as the final decision rests with the courts and the National Credit Regulator (NCR) guidelines. However, we only work with specialists who have proven track records of success."
+      question: "How does ThinkDebt Solutions ensure the quality of its partners?",
+      answer: "We employ a rigorous 5-step vetting process. Every partner must be fully compliant with South African regulations (like the NCR and FSCA), maintain a proven track record of success, and adhere to our strict ethical standards for transparency and service."
     },
     {
       question: "Is my personal information safe with ThinkDebt Solutions?",
-      answer: "Absolutely. We are fully POPIA (Protection of Personal Information Act) compliant. Your data is encrypted and only shared with the specific vetted specialist assigned to your case. We never sell your data to third parties."
+      answer: "Absolutely. We are fully POPIA (Protection of Personal Information Act) compliant. Your data is encrypted and only shared with the specific vetted specialist assigned to your case. Your privacy and security are our highest priorities."
     }
   ];
 
   const steps = [
     {
       title: "Secure Submission",
-      description: "Submit your details through our encrypted portal. We collect only the necessary information to assess your situation.",
+      description: "Submit your details through our encrypted portal. Every request is reviewed by a professional to ensure the right path forward.",
       icon: <FileText className="w-8 h-8 text-blue-600" />
     },
     {
-      title: "Expert Matching",
-      description: "Our system matches your profile with a vetted, NCR-compliant debt removal specialist who fits your specific needs.",
+      title: "Expert Consultation",
+      description: "You are matched with a highly trained, NCR-compliant financial specialist equipped to assist with your specific service interest.",
       icon: <Search className="w-8 h-8 text-blue-600" />
     },
     {
-      title: "Legal Resolution",
-      description: "The specialist handles the legal and administrative work to remove your debt review status ethically and legally.",
+      title: "Professional Resolution",
+      description: "Your assigned specialist manages the end-to-end process, providing expert guidance and administrative support for your chosen solution.",
       icon: <UserCheck className="w-8 h-8 text-blue-600" />
+    }
+  ];
+
+  const specializedServices = [
+    {
+      title: "Debt Review Removal",
+      desc: "Expert legal assistance to rescind your debt review status once your circumstances have improved or if you were incorrectly listed.",
+      icon: <Shield className="w-10 h-10 text-blue-600 mb-4" />,
+      features: ["Court order rescission", "Credit bureau flag clearing", "Financial name restoration"]
+    },
+    {
+      title: "Debt Mediation",
+      desc: "A voluntary alternative focused on expert negotiation directly with your creditors to achieve financial relief without a formal court order.",
+      icon: <Users className="w-10 h-10 text-emerald-600 mb-4" />,
+      features: ["No formal legal orders", "Negotiated interest rate reductions", "Flexible repayment terms"]
+    },
+    {
+      title: "Debt Review",
+      desc: "A formal, legally protected process to restructure your obligations into a single, affordable monthly installment.",
+      icon: <FileText className="w-10 h-10 text-blue-500 mb-4" />,
+      features: ["Consolidated repayments", "Legal protection from creditors", "Fixed installment plans"]
+    }
+  ];
+
+  const lifestyleProducts = [
+    { icon: <Smartphone className="w-8 h-8 text-blue-600" />, title: "Budgeting Tools & Apps", desc: "Subscription-based access to premium financial management tools and applications." },
+    { icon: <TrendingUp className="w-8 h-8 text-blue-600" />, title: "Credit Score Monitoring Services", desc: "Real-time tracking and intelligent reports of your credit health with professional score monitoring." },
+    { icon: <BookOpen className="w-8 h-8 text-blue-600" />, title: "Financial Education", desc: "Memberships or courses designed to help you master money management and financial literacy." },
+    { icon: <Activity className="w-8 h-8 text-blue-600" />, title: "Spending Trackers", desc: "Advanced banking insight tools that provide deep visibility into your daily expenses and habits." }
+  ];
+
+  const financialProtection = [
+    {
+      title: "Credit Life Insurance",
+      desc: "Comprehensive protection that covers your outstanding debt in the event of death, disability, or unemployment.",
+      icon: <CreditCard className="w-12 h-12 text-blue-600" />
+    },
+    {
+      title: "Funeral Cover Plans",
+      desc: "Affordable, high-benefit funeral plans that provide financial security and peace of mind during difficult times.",
+      icon: <Heart className="w-12 h-12 text-blue-600" />
+    },
+    {
+      title: "Income Protector",
+      desc: "Safeguards your primary income stream, ensuring monthly commitments are met despite unexpected life events.",
+      icon: <Activity className="w-12 h-12 text-blue-600" />
+    },
+    {
+      title: "Administration Order Removal",
+      desc: "Expert legal assistance to rescind administration orders, clearing your name and restoring your full credit profile.",
+      icon: <FileSearch className="w-12 h-12 text-blue-600" />
     }
   ];
 
@@ -180,13 +233,16 @@ const ThinkDebtView: React.FC<ThinkDebtViewProps> = ({ onNavigate }) => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center space-x-2 px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-bold mb-8 uppercase tracking-widest"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-12 inline-block"
           >
-            <Shield className="w-4 h-4" />
-            <span>Trusted Intermediary Service</span>
+            <div className="bg-slate-900 text-white px-6 py-3 rounded-2xl flex items-center gap-3 shadow-2xl border border-slate-800">
+              <Shield className="w-5 h-5 text-blue-400" />
+              <span className="text-xs sm:text-sm font-bold tracking-widest uppercase text-center">
+                In Partnership with an NCR Compliant company that has • Over 30 Years Combined Expertise
+              </span>
+            </div>
           </motion.div>
 
           <motion.h1
@@ -195,8 +251,8 @@ const ThinkDebtView: React.FC<ThinkDebtViewProps> = ({ onNavigate }) => {
             animate="visible"
             className="text-5xl md:text-7xl font-bold text-slate-900 mb-8 tracking-tight leading-tight"
           >
-            Your Trusted Bridge to <br />
-            <span className="text-blue-600">Financial Freedom.</span>
+            A Holistic Approach to <br />
+            <span className="text-blue-600">Financial Wellness.</span>
           </motion.h1>
 
           <motion.p
@@ -205,7 +261,7 @@ const ThinkDebtView: React.FC<ThinkDebtViewProps> = ({ onNavigate }) => {
             animate="visible"
             className="text-xl text-slate-600 max-w-3xl mx-auto mb-16 leading-relaxed"
           >
-            ThinkDebt Solutions connects South Africans with carefully vetted, reputable debt review removal specialists. We prioritize your security, ensuring you avoid scams and work only with verified professionals.
+            ThinkDebt Solutions provides a gateway to total financial restoration. Through our partnership with a premier, NCR-vetted debt management company, we offer expert-led solutions for every stage of your financial journey.
           </motion.p>
 
           <div className="relative z-10 text-left">
@@ -216,9 +272,9 @@ const ThinkDebtView: React.FC<ThinkDebtViewProps> = ({ onNavigate }) => {
               className="bg-white rounded-[2.5rem] shadow-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-2"
             >
               <div className="p-12 lg:p-20 bg-slate-900 text-white">
-                <h2 className="text-4xl font-bold mb-8">Get Connected to a Trusted Specialist Today</h2>
-                <p className="text-slate-400 text-lg mb-12 leading-relaxed">
-                  Take the first step towards clearing your name and regaining financial control. Submit your details securely, and we'll match you with a verified expert.
+                <h2 className="text-4xl font-bold mb-8">Consult with a Trained Specialist</h2>
+                <p className="text-slate-400 mb-8 leading-relaxed">
+                  Every financial specialist in our network undergoes a rigorous 5-step vetting process before they can help even a single ThinkDebt customer.
                 </p>
                 <div className="space-y-6">
                   <div className="flex items-center space-x-4">
@@ -278,6 +334,26 @@ const ThinkDebtView: React.FC<ThinkDebtViewProps> = ({ onNavigate }) => {
                       <label className="text-sm font-bold text-slate-700 uppercase tracking-wider">Email Address</label>
                       <input required type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full px-6 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all" placeholder="john@example.com" />
                     </div>
+                    <div className="space-y-2">
+                      <label className="text-sm font-bold text-slate-700 uppercase tracking-wider">Primary Service Interest</label>
+                      <select 
+                        value={serviceInterest} 
+                        onChange={(e) => setServiceInterest(e.target.value)} 
+                        className="w-full px-6 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all appearance-none cursor-pointer"
+                      >
+                        <option>Debt Review Removal</option>
+                        <option>Debt Mediation</option>
+                        <option>Budgeting Tools & Apps</option>
+                        <option>Credit Score Monitoring</option>
+                        <option>Financial Education</option>
+                        <option>Spending Trackers</option>
+                        <option>Credit Life Insurance</option>
+                        <option>Funeral Cover Plans</option>
+                        <option>Income Protector</option>
+                        <option>Administration Order Removal</option>
+                      </select>
+                    </div>
+
                     <div className="space-y-2">
                       <label className="text-sm font-bold text-slate-700 uppercase tracking-wider">Current Debt Status</label>
                       <select value={debtStatus} onChange={(e) => setDebtStatus(e.target.value)} className="w-full px-6 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all appearance-none">
@@ -358,7 +434,7 @@ const ThinkDebtView: React.FC<ThinkDebtViewProps> = ({ onNavigate }) => {
                       <CheckCircle className="w-12 h-12" />
                     </div>
                     <h4 className="text-3xl font-bold text-slate-900 mb-4">Request Submitted Successfully</h4>
-                    <p className="text-lg text-slate-600 mb-10 max-w-sm mx-auto">One of our verified specialists will review your details and contact you shortly to discuss your freedom.</p>
+                    <p className="text-lg text-slate-600 mb-10 max-w-sm mx-auto">One of our verified specialists will review your details and contact you shortly to discuss your unique needs.</p>
                     <button onClick={() => setIsSubmitted(false)} className="px-8 py-3 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors">Submit another request</button>
                   </div>
                 )}
@@ -368,7 +444,7 @@ const ThinkDebtView: React.FC<ThinkDebtViewProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* What is Debt Review Removal */}
+      {/* Holistic Financial Restoration Section */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -378,18 +454,18 @@ const ThinkDebtView: React.FC<ThinkDebtViewProps> = ({ onNavigate }) => {
               viewport={{ once: true, margin: "-100px" }}
               variants={leftSlideVariants}
             >
-              <h2 className="text-4xl font-bold text-slate-900 mb-6">Understanding Debt Review Removal</h2>
+              <h2 className="text-4xl font-bold text-slate-900 mb-6">Your Path to Financial Restoration</h2>
               <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                In South Africa, debt review is a formal legal process intended to help over-indebted consumers. However, many find themselves stuck in the system even after their financial situation has improved.
+                True financial wellness is about more than just managing debt—it's about restoring your financial integrity and building a foundation for sustainable growth. 
               </p>
               <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-                Debt review removal is the legal process of rescinding the debt review order. This allows you to regain control of your financial profile, apply for new credit when needed, and clear your name from the credit bureau's debt review flag.
+                Whether you're looking to clear legal flags from your profile, protect your family with specialized cover, or master your daily spending, ThinkDebt Solutions connects you with the exact expertise required to move forward with confidence.
               </p>
               <div className="space-y-4">
                 {[
-                  "Legally rescind court orders",
-                  "Clear credit bureau flags",
-                  "Regain financial independence"
+                  "Holistic profile restoration",
+                  "Verified legal & administrative support",
+                  "Proactive financial management tools"
                 ].map((item, idx) => (
                   <motion.div
                     key={idx}
@@ -416,15 +492,15 @@ const ThinkDebtView: React.FC<ThinkDebtViewProps> = ({ onNavigate }) => {
               <div className="absolute -top-6 -left-6 w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center text-white shadow-lg">
                 <HelpCircle className="w-6 h-6" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-6">Why Use an Intermediary?</h3>
+              <h3 className="text-2xl font-bold text-slate-900 mb-6">Why Trust Our Process?</h3>
               <p className="text-slate-600 mb-6">
-                The debt removal industry is unfortunately filled with unverified operators and scams. ThinkDebt Solutions acts as your shield, vetting every partner to ensure they are:
+                The financial services landscape can be overwhelming. ThinkDebt Solutions acts as your professional buffer, ensuring every service you access is:
               </p>
               <ul className="space-y-4">
                 {[
-                  "NCR Registered & Compliant",
-                  "Proven Track Record of Success",
-                  "Ethical & Transparent Fee Structures"
+                  "NCR & Regulatory Compliant",
+                  "Vetted for Ethical Standards",
+                  "Focused on Long-term Results"
                 ].map((item, idx) => (
                   <motion.li
                     key={idx}
@@ -440,6 +516,125 @@ const ThinkDebtView: React.FC<ThinkDebtViewProps> = ({ onNavigate }) => {
                 ))}
               </ul>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Specialized Solutions Section */}
+      <section className="py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-bold text-slate-900 mb-6">Expert Financial Solutions</h2>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+              Professional services tailored to help you resolve your unique financial challenges safely and efficiently.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {specializedServices.map((service, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.2 }}
+                viewport={{ once: true }}
+                className="bg-white p-10 rounded-[3rem] shadow-xl border border-slate-100"
+              >
+                {service.icon}
+                <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
+                <p className="text-slate-600 mb-8">{service.desc}</p>
+                <ul className="space-y-3">
+                  {service.features.map((f, i) => (
+                    <li key={i} className="flex items-center gap-3 text-slate-700 font-medium">
+                      <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Digital Lifestyle Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row gap-16 items-center">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={leftSlideVariants}
+              className="lg:w-1/3"
+            >
+              <h2 className="text-4xl font-bold text-slate-900 mb-6">Digital Lifestyle Products</h2>
+              <p className="text-lg text-slate-600 mb-8">Empowering you with the digital tools and knowledge to stay financially healthy for life.</p>
+              <div className="bg-blue-600 p-8 rounded-3xl text-white shadow-xl">
+                <h4 className="text-xl font-bold mb-2">Smart Subscriptions</h4>
+                <p className="text-blue-100">Access elite financial tools through our partner ecosystem.</p>
+              </div>
+            </motion.div>
+
+            <div className="lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {lifestyleProducts.map((p, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: idx * 0.1 }}
+                  viewport={{ once: true }}
+                  className="p-8 bg-slate-50 rounded-[2rem] border border-slate-100 hover:border-blue-200 transition-all hover:shadow-lg group"
+                >
+                  <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform">
+                    {p.icon}
+                  </div>
+                  <h4 className="text-lg font-bold mb-2">{p.title}</h4>
+                  <p className="text-sm text-slate-500 leading-relaxed">{p.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Financial Protection Section */}
+      <section className="py-24 bg-slate-900 text-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-20"
+          >
+            <h2 className="text-4xl font-bold mb-6">Financial Protection & Legal Restoration</h2>
+            <p className="text-slate-400 max-w-2xl mx-auto text-lg leading-relaxed">
+              Securing your future means looking beyond debt removal. Our extended services provide a safety net for your family and legal clarity for your profile.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {financialProtection.map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: idx * 0.15 }}
+                viewport={{ once: true }}
+                className="bg-slate-800/50 p-8 rounded-3xl border border-slate-700 hover:border-blue-500 transition-colors"
+              >
+                <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-8">
+                  {item.icon}
+                </div>
+                <h3 className="text-xl font-bold mb-4">{item.title}</h3>
+                <p className="text-sm text-slate-400 leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

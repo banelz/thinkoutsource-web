@@ -12,7 +12,7 @@
     "build": "vite build",
     "lint": "tsc --noEmit",
     "preview": "vite preview",
-    "start": "node app.js",
+    "start": "vite",
     "test-db": "node db_test.js",
     "test-smtp": "node smtp_test.js"
   },
