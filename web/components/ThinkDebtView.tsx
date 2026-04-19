@@ -341,16 +341,20 @@ const ThinkDebtView: React.FC<ThinkDebtViewProps> = ({ onNavigate }) => {
                         onChange={(e) => setServiceInterest(e.target.value)} 
                         className="w-full px-6 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all appearance-none cursor-pointer"
                       >
-                        <option>Debt Review Removal</option>
-                        <option>Debt Mediation</option>
-                        <option>Budgeting Tools & Apps</option>
-                        <option>Credit Score Monitoring</option>
-                        <option>Financial Education</option>
-                        <option>Spending Trackers</option>
-                        <option>Credit Life Insurance</option>
-                        <option>Funeral Cover Plans</option>
-                        <option>Income Protector</option>
+                        {specializedServices.map(s => (
+                          <option key={s.title} value={s.title}>{s.title}</option>
+                        ))}
                         <option>Administration Order Removal</option>
+                        <optgroup label="Digital Lifestyle Products">
+                          {lifestyleProducts.map(p => (
+                            <option key={p.title} value={p.title}>{p.title}</option>
+                          ))}
+                        </optgroup>
+                        <optgroup label="Financial Protection">
+                          {financialProtection.map(f => (
+                            <option key={f.title} value={f.title}>{f.title}</option>
+                          ))}
+                        </optgroup>
                       </select>
                     </div>
 

@@ -58,11 +58,12 @@ const getCareerTemplate = (firstName) => `
     </div>
 `;
 
-const getDebtTemplate = (name) => `
+const getDebtTemplate = (name, serviceInterest) => `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
         <h2 style="color: #2563eb;">Debt Review Inquiry Received</h2>
         <p>Hi ${name},</p>
         <p>Thank you for trusting ThinkDebt Solutions. This email confirms that we have securely received your details.</p>
+        <p><strong>Service Interest:</strong> ${serviceInterest || 'Not Specified'}</p>
         <p>One of our verified, NCR-compliant specialists has been notified and will be in touch with you shortly to discuss the next steps towards your financial freedom.</p>
         <br/>
         <p>Read more about the process on our website or reply to this email if you have urgent questions.</p>
