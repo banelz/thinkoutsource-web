@@ -88,7 +88,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
                     </div>
                     <div className="space-y-1">
                       <button
-                        onClick={() => window.location.href = 'https://thinkoutsource.co.za/thinkdebt-solutions'}
+                        onClick={() => handleNavigate('think-debt')}
                         className="w-full text-left px-4 py-3 hover:bg-blue-50 transition-colors group"
                       >
                         <div className="font-bold text-slate-900 group-hover:text-blue-600">ThinkDebt Solutions</div>
@@ -149,7 +149,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
           <div className="pt-4 border-t border-slate-100">
             <span className="px-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-2">Services</span>
             <button
-              onClick={() => window.location.href = 'https://thinkoutsource.co.za/thinkdebt-solutions'}
+              onClick={() => handleNavigate('think-debt')}
               className={`block w-full text-left px-4 py-3 rounded-xl ${currentView === 'think-debt' ? 'bg-blue-50 text-blue-600' : 'text-slate-600'
                 }`}
             >

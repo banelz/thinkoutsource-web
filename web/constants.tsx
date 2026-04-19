@@ -82,6 +82,24 @@ export const SERVICES: Service[] = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 002 2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     )
+  },
+  {
+    title: "ThinkDebt Solutions",
+    description: "Holistic financial wellness, debt review removal, and administration order mediation.",
+    tags: ["Debt Review Removal", "Debt Mediation", "Financial Monitoring", "Credit Life Protection"],
+    longDescription: "ThinkDebt Solutions is our dedicated financial wellness arm. We provide expert interventions for individuals seeking to clear their credit scores, exit debt review, or mediate administration orders. We also provide access to premium financial lifestyle products like budgeting apps and credit life insurance.",
+    experience: "Successfully acting as compliant intermediaries to help consumers navigate complex legal frameworks, restoring credit dignity and providing lifelong financial education.",
+    whyUs: [
+      "NCR Regulatory Compliant Partners",
+      "Ethical transparent fee structures",
+      "Complete life protection products",
+      "End-to-end administrative management"
+    ],
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    )
   }
 ];
 

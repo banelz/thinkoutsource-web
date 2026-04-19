@@ -318,9 +318,21 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate, onSelectService }) => {
                 ThinkDebt <br />
                 <span className="text-blue-600">Solutions.</span>
               </h2>
-              <p className="text-lg text-slate-600 mb-10 leading-relaxed">
-                Struggling with debt review? We connect you to vetted, reputable specialists in South Africa who help you remove debt review legally and ethically. Protect yourself from scams with our trusted intermediary service.
+              <p className="text-lg text-slate-600 mb-6 leading-relaxed">
+                Struggling with debt review? We connect you to vetted, reputable specialists in South Africa who help you remove debt review legally and ethically. 
               </p>
+              <div className="mb-10 text-sm text-slate-500 bg-white/50 p-4 rounded-xl border border-blue-100">
+                <span className="font-bold text-slate-700 block mb-2">Our comprehensive suite includes:</span>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1">
+                  <li>• Debt Review & Mediation</li>
+                  <li>• Digital Lifestyle Products</li>
+                  <li>• Credit Life Insurance</li>
+                  <li>• Credit Score Monitoring</li>
+                  <li>• Financial Education</li>
+                  <li>• Admin Order Removal</li>
+                </ul>
+              </div>
+
               {!isSubmitted ? (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -357,16 +369,16 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate, onSelectService }) => {
                     <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Email Address</label>
                     <input required type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full px-4 py-3 bg-slate-50 border border-slate-100 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all text-sm" placeholder="john@example.com" />
                   </div>
-                  <div className="space-y-1">
-                    <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Debt Status</label>
-                    <select value={debtStatus} onChange={(e) => setDebtStatus(e.target.value)} className="w-full px-4 py-3 bg-slate-50 border border-slate-100 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all appearance-none text-xs">
-                      <option>Currently under Debt Review</option>
-                      <option>Debts paid, but flag remains</option>
-                      <option>Incorrectly placed under review</option>
-                      <option>Other / Not sure</option>
-                    </select>
-                  </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-1">
+                      <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Debt Status</label>
+                      <select value={debtStatus} onChange={(e) => setDebtStatus(e.target.value)} className="w-full px-4 py-3 bg-slate-50 border border-slate-100 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all appearance-none text-xs">
+                        <option>Currently under Debt Review</option>
+                        <option>Debts paid, but flag remains</option>
+                        <option>Incorrectly placed under review</option>
+                        <option>Other / Not sure</option>
+                      </select>
+                    </div>
                     <div className="space-y-1">
                       <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Employment</label>
                       <select value={employmentStatus} onChange={(e) => setEmploymentStatus(e.target.value)} className="w-full px-4 py-3 bg-slate-50 border border-slate-100 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all appearance-none text-xs">

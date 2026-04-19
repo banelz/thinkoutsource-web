@@ -153,6 +153,12 @@ const ThinkDebtView: React.FC<ThinkDebtViewProps> = ({ onNavigate }) => {
       desc: "A formal, legally protected process to restructure your obligations into a single, affordable monthly installment.",
       icon: <FileText className="w-10 h-10 text-blue-500 mb-4" />,
       features: ["Consolidated repayments", "Legal protection from creditors", "Fixed installment plans"]
+    },
+    {
+      title: "Administration Order Removal",
+      desc: "Expert legal assistance to rescind administration orders, clearing your name and restoring your full credit profile.",
+      icon: <FileSearch className="w-10 h-10 text-blue-500 mb-4" />,
+      features: ["Court order rescission", "Legal representation", "Credit restoration"]
     }
   ];
 
@@ -178,11 +184,6 @@ const ThinkDebtView: React.FC<ThinkDebtViewProps> = ({ onNavigate }) => {
       title: "Income Protector",
       desc: "Safeguards your primary income stream, ensuring monthly commitments are met despite unexpected life events.",
       icon: <Activity className="w-12 h-12 text-blue-600" />
-    },
-    {
-      title: "Administration Order Removal",
-      desc: "Expert legal assistance to rescind administration orders, clearing your name and restoring your full credit profile.",
-      icon: <FileSearch className="w-12 h-12 text-blue-600" />
     }
   ];
 
@@ -334,30 +335,6 @@ const ThinkDebtView: React.FC<ThinkDebtViewProps> = ({ onNavigate }) => {
                       <label className="text-sm font-bold text-slate-700 uppercase tracking-wider">Email Address</label>
                       <input required type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full px-6 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all" placeholder="john@example.com" />
                     </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-bold text-slate-700 uppercase tracking-wider">Primary Service Interest</label>
-                      <select 
-                        value={serviceInterest} 
-                        onChange={(e) => setServiceInterest(e.target.value)} 
-                        className="w-full px-6 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all appearance-none cursor-pointer"
-                      >
-                        {specializedServices.map(s => (
-                          <option key={s.title} value={s.title}>{s.title}</option>
-                        ))}
-                        <option>Administration Order Removal</option>
-                        <optgroup label="Digital Lifestyle Products">
-                          {lifestyleProducts.map(p => (
-                            <option key={p.title} value={p.title}>{p.title}</option>
-                          ))}
-                        </optgroup>
-                        <optgroup label="Financial Protection">
-                          {financialProtection.map(f => (
-                            <option key={f.title} value={f.title}>{f.title}</option>
-                          ))}
-                        </optgroup>
-                      </select>
-                    </div>
-
                     <div className="space-y-2">
                       <label className="text-sm font-bold text-slate-700 uppercase tracking-wider">Current Debt Status</label>
                       <select value={debtStatus} onChange={(e) => setDebtStatus(e.target.value)} className="w-full px-6 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all appearance-none">

@@ -84,8 +84,12 @@ const App: React.FC = () => {
   }, []);
 
   const handleNavigateToService = (index: number) => {
-    setSelectedServiceIndex(index);
-    setCurrentView('service-detail');
+    if (SERVICES[index].title === 'ThinkDebt Solutions') {
+      setCurrentView('think-debt');
+    } else {
+      setSelectedServiceIndex(index);
+      setCurrentView('service-detail');
+    }
   };
 
   const renderView = () => {
@@ -137,14 +141,6 @@ const App: React.FC = () => {
             <div>
               <h4 className="text-sm font-bold uppercase tracking-widest mb-8 text-slate-400">Services</h4>
               <ul className="space-y-5 text-slate-700 font-medium">
-                <li>
-                  <button 
-                    onClick={() => window.location.href = 'https://thinkoutsource.co.za/thinkdebt-solutions'} 
-                    className="text-blue-600 font-bold hover:text-blue-700 transition-colors text-left"
-                  >
-                    ThinkDebt Solutions
-                  </button>
-                </li>
                 {SERVICES.map((s, idx) => (
                   <li key={idx}>
                     <button 
